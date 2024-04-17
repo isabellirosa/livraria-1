@@ -5,3 +5,4 @@ from .livro import LivroDetailSerializer
 from .livro import LivroListSerializer
 from .livro import LivroSerializer
 from usuario.serializers import UsuarioSerializer
+from .compra import CompraSerializer

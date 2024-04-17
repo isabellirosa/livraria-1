@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from livraria.models import Autor, Categoria, Editora, Livro
+from livraria.models import Autor, Categoria, Editora, Livro, Compra
+
+admin.site.register(Compra)
 
 @admin.register(Autor)
 class AutorAdmin(admin.ModelAdmin):

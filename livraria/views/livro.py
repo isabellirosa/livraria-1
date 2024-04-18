@@ -12,6 +12,7 @@ class LivroViewSet(ModelViewSet):
     serializer_class = LivroSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ["categoria__descricao", "editora__nome"]
+    search_fields = ["titulo"]
 
 
 def get_serializer_class(self):

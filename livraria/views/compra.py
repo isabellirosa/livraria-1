@@ -2,16 +2,16 @@ from rest_framework.viewsets import ModelViewSet
 
 from livraria.models import Compra
 from livraria.serializers import CompraSerializer, CriarEditarCompraSerializer
-from django_filters.rest_framework import DjangoFilterBackend, SearchFilter, OrderingFilter
+# from django_filters.rest_framework import DjangoFilterBackend, SearchFilter, OrderingFilter
 
 
 
 class CompraViewSet(ModelViewSet):
     queryset = Compra.objects.all()
-    filter_backends=[DjangoFilterBackend, SearchFilter, OrderingFilter]
+    # filter_backends=[DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields=["usuario", "status", "data"]
     search_fields = ["usuario__email","status"]
-    ordering_fields = ["usuario__email","status"]
+    ordering_fields = ["usuario__email","status", "data"]
     ordering = ["usuario"]
 
     def get_queryset(self):

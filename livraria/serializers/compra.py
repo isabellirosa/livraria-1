@@ -37,13 +37,20 @@ class CriarEditarItensCompraSerializer(ModelSerializer):
         model = ItensCompra
         fields = ("livro", "quantidade")
 
+    def validate(self, data):
+        if data["quantidade"] > data["livro"].quantidade:
+            raise serializers.ValidationError(
+                {"quantidade": "Quantidade solicitada não disponível em estoque."}
+            )
+        return data
+
 class CriarEditarCompraSerializer(ModelSerializer):
     itens = CriarEditarItensCompraSerializer(many=True) # Aqui mudou
 
     class Meta:
         model = Compra
         fields = ("usuario", "itens")
-
+    
     def create(self, validated_data):
         itens_data = validated_data.pop("itens")
         compra = Compra.objects.create(**validated_data)
